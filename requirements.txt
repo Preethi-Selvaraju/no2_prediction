@@ -5,3 +5,4 @@ xarray
 scikit-learn
 tensorflow
 matplotlib
+streamlit_folium
