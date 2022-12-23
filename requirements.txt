@@ -1,0 +1,7 @@
+pip
+streamlit
+netCDF4
+xarray
+scikit-learn
+tensorflow
+matplotlib
