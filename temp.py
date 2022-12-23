@@ -122,7 +122,7 @@ def preprocess(ds):
 #print(L3_data)
 
 #L3_data.to_netcdf(path=r"C:\Users\HP\.spyder-py3\data\days_combined.nc")
-L3_data1=Dataset(r"data/days_combined.nc")
+L3_data1=Dataset(r"days_combined.nc")
 #print(L3_data1.variables.keys())
 lat=L3_data1.variables['latitude'][:]
 lon=L3_data1.variables['longitude'][:]
@@ -167,7 +167,7 @@ def predict(latitude_input,longitude_input,date):
     #            PREDICTION MODULE               #
     ##############################################
     ### Data Collection
-    data_frame=pd.read_csv(r"data/days_combined.csv")
+    data_frame=pd.read_csv(r"days_combined.csv")
     df1=data_frame.reset_index()['NO2']
     #st.write(df1)
     ### LSTM are sensitive to the scale of the data. so we apply MinMax scaler 
