@@ -78,8 +78,8 @@ import os
 ##############################################
 
 
-input_path="C:/Users/HP/.spyder-py3/data/New folder/"
-export_path="C:/Users/HP/.spyder-py3/data/"
+input_path="data/L2"
+export_path="data/"
 
 list_files=sorted(os.listdir(input_path))
 
@@ -108,8 +108,8 @@ attributes={os.path.basename(i):
                 }
 
 #print(dict(itertools.islice(attributes.items(),1)))
-export_path1="C:/Users/HP/.spyder-py3/data/L3"
-files_L3= sorted(list(glob.glob(join(export_path1, 'S5P_OFFL_*.nc'))))
+#export_path1="data/L3"
+#files_L3= sorted(list(glob.glob(join(export_path1, 'S5P_OFFL_*.nc'))))
 
 print(files_L3)
 def preprocess(ds):
@@ -118,11 +118,11 @@ def preprocess(ds):
     return ds
 
 
-L3_data=xr.open_mfdataset(files_L3,decode_times=False,combine='nested',concat_dim='time',preprocess=preprocess,chunks={'time':100})
+#L3_data=xr.open_mfdataset(files_L3,decode_times=False,combine='nested',concat_dim='time',preprocess=preprocess,chunks={'time':100})
 #print(L3_data)
 
 #L3_data.to_netcdf(path=r"C:\Users\HP\.spyder-py3\data\days_combined.nc")
-L3_data1=Dataset(r"C:\Users\HP\.spyder-py3\data\days_combined.nc")
+L3_data1=Dataset(r"data/days_combined.nc")
 #print(L3_data1.variables.keys())
 lat=L3_data1.variables['latitude'][:]
 lon=L3_data1.variables['longitude'][:]
@@ -167,7 +167,7 @@ def predict(latitude_input,longitude_input,date):
     #            PREDICTION MODULE               #
     ##############################################
     ### Data Collection
-    data_frame=pd.read_csv(r"C:\Users\HP\.spyder-py3\data\days_combined.csv")
+    data_frame=pd.read_csv(r"data/days_combined.csv")
     df1=data_frame.reset_index()['NO2']
     #st.write(df1)
     ### LSTM are sensitive to the scale of the data. so we apply MinMax scaler 
