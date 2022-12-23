@@ -78,16 +78,16 @@ import os
 ##############################################
 
 
-input_path="data/L2"
-export_path="data/"
+#input_path="data/L2"
+#export_path="data/"
 
-list_files=sorted(os.listdir(input_path))
+#list_files=sorted(os.listdir(input_path))
 
-files_inputs= sorted(list(glob.glob(join(input_path, 'S5P_OFFL_*.nc'))))
+#files_inputs= sorted(list(glob.glob(join(input_path, 'S5P_OFFL_*.nc'))))
 #print(files_inputs)
-for file in list_files:
-    if file.startswith("S5P_OFFL_")==False:
-        list_files.remove(file)
+#for file in list_files:
+#    if file.startswith("S5P_OFFL_")==False:
+#        list_files.remove(file)
    
         
    
@@ -100,18 +100,18 @@ for file in list_files:
 #     harp.export_product(product_name,"{export_path}/{name}".format(export_path=export_path,name=files_inputs[i].split('/')[-1].replace('New folder','L3')),file_format='netcdf')
 #     print(os.path.basename(files_inputs[i]),"done preprocessing")
 
-attributes={os.path.basename(i):
-                {
-                    'time_coverage_start': xr.open_dataset(i).attrs['time_coverage_start'],
-                    'time_coverage_end': xr.open_dataset(i).attrs['time_coverage_end'],                   
-              }for i in files_inputs
-                }
+#attributes={os.path.basename(i):
+#                {
+#                    'time_coverage_start': xr.open_dataset(i).attrs['time_coverage_start'],
+#                    'time_coverage_end': xr.open_dataset(i).attrs['time_coverage_end'],                   
+#              }for i in files_inputs
+#                }
 
 #print(dict(itertools.islice(attributes.items(),1)))
 #export_path1="data/L3"
 #files_L3= sorted(list(glob.glob(join(export_path1, 'S5P_OFFL_*.nc'))))
 
-print(files_L3)
+#print(files_L3)
 def preprocess(ds):
     print('\nsource_product\n',ds.attrs['source_product'])
     ds['time']=pd.to_datetime(np.array([attributes[ds.attrs['source_product']]['time_coverage_start']])).values
